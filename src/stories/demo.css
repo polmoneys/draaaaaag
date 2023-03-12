@@ -1,0 +1,96 @@
+main {
+  user-select: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.demo-grid {
+  min-height: 100vh;
+  border: 2px solid;
+  width: 100%;
+  /*grid-template-columns: repeat(auto-fit, minmax(min(100%, 8em), 1fr));*/
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, 8em); */
+  grid-template-columns: repeat(auto-fit, 300px);
+
+  gap: 2em;
+  place-content: center;
+}
+
+.demo-distance {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  gap: 4em;
+  place-content: center;
+}
+
+.demo-grid li,
+.demo-list li {
+  position: relative;
+  touch-action: none;
+  cursor: grab;
+}
+
+.demo-grid li,
+.demo-distance li {
+  height: 8em;
+  border: 2px solid;
+}
+
+.demo-grid li {
+  padding: 0.4em;
+}
+li.dragged {
+  cursor: grabbing;
+  transition: transform 150ms ease-out;
+  z-index: 999;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: hsla(349, 100%, 63%, 1);
+}
+
+li.hov {
+  background-color: hsla(349, 15%, 82%, 1);
+}
+
+.demo-distance li {
+  display: grid;
+  place-content: center;
+  font-weight: 700;
+}
+
+li.selected {
+  background-color: hsla(349, 100%, 63%, 1);
+}
+
+.distance-1 {
+  background-color: hsla(349, 15%, 92%, 1);
+}
+
+.distance-2 {
+  background-color: hsla(349, 15%, 82%, 1);
+}
+
+.distance-3 {
+  background-color: hsla(349, 15%, 72%, 1);
+}
+.distance-4 {
+  background-color: hsla(349, 15%, 62%, 1);
+}
+
+.demo-list {
+  max-width: 600px;
+  margin: 10vh auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+.demo-list li {
+  height: 3em;
+  border: 2px solid;
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
