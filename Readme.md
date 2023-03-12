@@ -1,6 +1,6 @@
 ## TLDR
 
-Exploring drag and drop with `react`, for fun. 
+Exploring drag and drop with `react` for no particular reason. 
 
 
 ### Inspiration 💐
