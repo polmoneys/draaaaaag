@@ -1,6 +1,6 @@
 ## TLDR
 
-Exploring drag and drop with `react` for no particular reason. 
+Exploring drag and drop with `react` for no particular reason. You can reorder cards in a grid, items in a list, `drag` around and interact with `drop`s...
 
 
 ### Inspiration 💐
