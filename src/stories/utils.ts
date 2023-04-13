@@ -11,5 +11,10 @@ export const makeCards = (amount: number): Card[] =>
     content: `Card ${pos}`,
   }))
 
-export const VariantOptions = ['grid', 'list', 'distance'] as const
+export const VariantOptions = [
+  'grid',
+  'list',
+  // 'distance',
+  'drag',
+] as const
 export type Variants = (typeof VariantOptions)[number]

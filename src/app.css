@@ -62,3 +62,8 @@ body {
   background-color: #999;
   pointer-events: none;
 }
+
+main {
+  position: relative;
+  min-height: 100vh;
+}

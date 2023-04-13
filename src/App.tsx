@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Leva } from 'leva'
 import './app.css'
 import './stories/demo.css'
@@ -20,7 +20,8 @@ export default function App(): JSX.Element {
         {
           grid: <Stories setter={setDemo} />,
           list: <Stories.List setter={setDemo} />,
-          distance: <Stories.Distance setter={setDemo} />,
+          // distance: <Stories.Distance setter={setDemo} />,
+          drag: <Stories.Drag setter={setDemo} />,
         }[demo]
       }
     </main>

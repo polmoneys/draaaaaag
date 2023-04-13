@@ -34,9 +34,10 @@ export default function Distance(props: Props): JSX.Element {
     ),
     demos: folder(
       {
-        grid: button(get => setter('grid')),
-        list: button(get => setter('list')),
-        distance: button(get => setter('distance')),
+        Grid: button(get => setter('grid')),
+        List: button(get => setter('list')),
+        // Distance: button(get => setter('distance')),
+        Drops: button(get => setter('drag')),
       },
       { color: '#007bff' },
     ),

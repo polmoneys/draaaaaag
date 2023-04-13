@@ -1,10 +1,11 @@
-import { Dispatch, SetStateAction, useEffect, useMemo } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { useControls, folder, button } from 'leva'
 import { cards, makeCards, Variants } from './utils'
 import Distance from './distance'
 import { List } from './list'
 import { Card } from '@/lib/types'
 import { useReorder } from '@/lib'
+import Drag from './drag'
 
 interface Props {
   setter: Dispatch<SetStateAction<Variants>>
@@ -16,9 +17,10 @@ function Stories(props: Props) {
   useControls({
     demos: folder(
       {
-        grid: button(get => setter('grid')),
-        list: button(get => setter('list')),
-        distance: button(get => setter('distance')),
+        Grid: button(get => setter('grid')),
+        List: button(get => setter('list')),
+        // Distance: button(get => setter('distance')),
+        Drops: button(get => setter('drag')),
       },
       { color: '#007bff' },
     ),
@@ -58,5 +60,6 @@ function Stories(props: Props) {
 
 Stories.List = List
 Stories.Distance = Distance
+Stories.Drag = Drag
 
 export default Stories
