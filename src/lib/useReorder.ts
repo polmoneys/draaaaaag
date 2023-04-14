@@ -1,25 +1,5 @@
-import { useMemo, useReducer, DragEvent, TouchEvent, useEffect } from 'react'
+import { useMemo, useReducer, DragEvent, TouchEvent } from 'react'
 import { Action, State } from './types'
-
-/*
-
-      case "REORDER_DATA":
-    if (state.draggedIndex === null || state.draggedOverIndex === null) {
-          return state;
-        }
-        const newData = [...state.data];
-        [newData[state.draggedIndex], newData[state.draggedOverIndex]] = [
-          newData[state.draggedOverIndex],
-          newData[state.draggedIndex]
-        ];
-        return {
-          ...state,
-          data: newData,
-          draggedIndex: state.draggedOverIndex,
-          draggedOverIndex: null
-        };
-        
-*/
 
 function useReorder<T>(
   initialData: T[],
@@ -51,7 +31,6 @@ function useReorder<T>(
           draggedIndex: state.draggedOverIndex!,
           draggedOverIndex: null,
         }
-
       case 'REORDER_DATA_2':
         const newData2 = [...state.data]
         const draggedItem = newData2[state.draggedIndex!]
@@ -130,7 +109,6 @@ function useReorder<T>(
 
   const onTouchMove = useMemo(
     () => (event: TouchEvent<HTMLLIElement>, index: number) => {
-      // console.error if event.preventDefault()
       const itemHeight = (event.target as any).offsetHeight
       const touchY = event.touches[0].clientY
       const newIndex = Math.floor((touchY - itemHeight / 2) / itemHeight)
@@ -151,16 +129,13 @@ function useReorder<T>(
     }
   }
 
-  const getGridItemClassName = (index: number): string => {
-    let className = ''
-    if (index === state.draggedIndex) {
-      className += `${draggedClassName}`
-    }
-    if (index === state.draggedOverIndex) {
-      className += `${hoverClassName}`
-    }
-    return className
-  }
+  const getGridItemClassName = (index: number): string =>
+    [
+      index === state.draggedIndex && `${draggedClassName}`,
+      index === state.draggedOverIndex && `${hoverClassName}`,
+    ]
+      .filter(Boolean)
+      .join(' ')
 
   const onReset = (newInitialData: T[]) => {
     dispatch({ type: 'UPDATE_INITIAL_DATA', initialData: newInitialData })

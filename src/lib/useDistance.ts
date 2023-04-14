@@ -1,11 +1,5 @@
-import { useState, useEffect, RefObject } from 'react'
-
-interface UseDistanceProps<T> {
-  items: T[]
-  containerRef: RefObject<HTMLElement>
-  selector?: string
-  distanceRange?: number
-}
+import { useState, useEffect } from 'react'
+import { UseDistanceProps } from './types'
 
 const useDistance = <T extends {}>({
   items,

@@ -1,20 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
+import { DraggableBounds, useDraggableProps } from './types'
 
-interface DraggableBounds {
-  top: number
-  right: number
-  bottom: number
-  left: number
-}
-
-interface Props {
-  buffer?: number
-  onCollision?: (collidingElement: HTMLElement | null) => void
-  collisionRefs?: React.RefObject<HTMLElement>[]
-  anticipate?: boolean
-}
-
-const useDraggable = (props?: Props) => {
+const useDraggable = (props?: useDraggableProps) => {
   const draggableRef = useRef<HTMLDivElement>(null)
   const [isDragging, setIsDragging] = useState(false)
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 })
@@ -52,19 +39,11 @@ const useDraggable = (props?: Props) => {
     const anticipation = props?.anticipate ? 16 : 0
 
     for (const { ref, rect } of collisionRects) {
-      /*
-  const isColliding =
-      updatedDraggableRect.left < rect.right + anticipation &&
-      updatedDraggableRect.right > rect.left - anticipation &&
-      updatedDraggableRect.top < rect.bottom + anticipation &&
-      updatedDraggableRect.bottom > rect.top - anticipation;
-
-*/
       const isColliding =
-        updatedDraggableRect.left < rect.right &&
-        updatedDraggableRect.right > rect.left &&
-        updatedDraggableRect.top < rect.bottom &&
-        updatedDraggableRect.bottom > rect.top
+        updatedDraggableRect.left < rect.right + anticipation &&
+        updatedDraggableRect.right > rect.left - anticipation &&
+        updatedDraggableRect.top < rect.bottom + anticipation &&
+        updatedDraggableRect.bottom > rect.top - anticipation
 
       if (isColliding) {
         props?.onCollision?.(ref.current ?? null)
